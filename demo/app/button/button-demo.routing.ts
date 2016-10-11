@@ -4,5 +4,5 @@ import { RouterModule } from '@angular/router';
 import { ButtonDemoComponent } from './button-demo.component';
 
 export const routing: ModuleWithProviders = RouterModule.forChild([
-  { path: 'login', component: ButtonDemoComponent }
+  { path: 'button', component: ButtonDemoComponent }
 ])

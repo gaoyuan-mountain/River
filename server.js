@@ -52,7 +52,7 @@ if (isDeveloping) {
     } catch (e) {
       // yield next;
       this.set('Content-Type','text/html');
-      this.body = this.webpack.fileSystem.readFileSync(path.join(config.output.path, 'demo/index.html'));
+      this.body = this.webpack.fileSystem.readFileSync(path.join(config.output.path, 'index.html'));
     }
   }));
 } else {
