@@ -1,7 +1,7 @@
 {
-  "name": "onigiri-angular2",
+  "name": "River",
   "version": "1.0.0",
-  "description": "onigiri with angular2",
+  "description": "river with angular2",
   "scripts": {
     "start": "babel-node server",
     "build": "rimraf dist && webpack --config config/webpack.prod.js --progress --profile --bail",
