@@ -1,33 +1,60 @@
-import {
-  Component,
-  ViewEncapsulation,
-  Input,
-  HostBinding,
-  ChangeDetectionStrategy,
-  ElementRef,
-  Renderer,
-  NgModule,
-  ModuleWithProviders
-} from '@angular/core';
+import { Component, ViewEncapsulation, OnChanges, ElementRef, NgModule, ModuleWithProviders } from "@angular/core";
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'rv-button, button[rv-button]',
+  selector: '[rv-button]:not(a)',
   templateUrl: 'button.html',
-  styles: [
-    // require('./button.scss')
-  ],
   encapsulation: ViewEncapsulation.None,
-  changeDetection: ChangeDetectionStrategy.OnPush
+  styles: [
+    require('./button.scss')
+  ]
 })
 export class RvButton {
+
   constructor() { }
+}
+
+
+@Component({
+  selector: 'a[rv-button]',
+  inputs: ['disabled'],
+  templateUrl: 'button.html',
+  encapsulation: ViewEncapsulation.None,
+  host: {
+    '(click)': 'onClick($event)'
+  },
+  styles: [
+    require('./button.scss')
+  ]
+})
+export class RvAnchor extends RvButton implements OnChanges {
+  tabIndex: number;
+  _disabled: boolean;
+
+  get disabled(): boolean {
+    return this._disabled;
+  }
+
+  set disabled(value) {
+    this._disabled = !!value && this.disabled !== false;
+  }
+
+  onClick(event: any) {
+    console.log('aaaaa');
+    if(this.disabled) {
+      event.preventDefault();
+    }
+  }
+
+  ngOnChanges(_: any) {
+    this.tabIndex = this.disabled ? -1 : 0;
+  }
 }
 
 @NgModule({
   imports: [ CommonModule ],
-  exports: [ RvButton ],
-  declarations: [ RvButton ]
+  exports: [ RvButton, RvAnchor ],
+  declarations: [ RvButton, RvAnchor ]
 })
 export class RvButtonModule {
   static forRoot(): ModuleWithProviders {

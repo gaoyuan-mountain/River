@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'demo-button',
   template: `
-    <rv-button></rv-button>
+    <a rv-button>abc</a>
   `,
   styles: []
 })

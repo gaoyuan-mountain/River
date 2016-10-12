@@ -35,22 +35,22 @@ module.exports = {
       },
       {
 				test: /\.css$/,
-				exclude: helpers.root('demo', 'app'),
+				exclude: [helpers.root('demo', 'app'), helpers.root('components')],
 				loader: ExtractTextPlugin.extract('style', 'css?sourceMap!postcss')
 			},
 			{
 				test: /\.css$/,
-				include: helpers.root('demo', 'app'),
+				include: [helpers.root('demo', 'app'), helpers.root('components')],
 				loader: 'raw!postcss'
 			},
 			{
 				test: /\.scss$/,
-				exclude: helpers.root('demo', 'app'),
+				exclude: [helpers.root('demo', 'app'), helpers.root('components')],
 				loader: ExtractTextPlugin.extract('style', 'css?sourceMap!postcss!resolve-url!sass?sourceMap')
 			},
 			{
 				test: /\.scss$/,
-				include: helpers.root('demo', 'app'),
+				include: [helpers.root('demo', 'app'), helpers.root('components')],
 				loaders: ['exports-loader?module.exports.toString()', 'css', 'postcss', 'sass']
 			}
     ]
