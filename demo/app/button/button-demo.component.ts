@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
   selector: 'demo-button',
   template: `
     <a rv-button>abc</a>
+    <rv-sidenav>def</rv-sidenav>
   `,
   styles: []
 })

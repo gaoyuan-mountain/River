@@ -1,0 +1,7 @@
+<div class="rv-sidenav-backdrop" (click)="_closeModalSidenav()" [class.rv-sidenav-shown]="_isShowingBackdrop()"></div>
+
+<ng-content select="rv-sidenav"></ng-content>
+
+<div class="rv-sidenav-content" [ngStyle]="_getStyles()">
+  <ng-content></ng-content>
+</div>
