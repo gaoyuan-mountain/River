@@ -1,13 +1,18 @@
 import { NgModule, ModuleWithProviders } from '@angular/core';
 
-import { RvButtonModule } from './button/index';
+import { RvButtonModule } from './button';
+import { RvSidenavModule } from './sidenav';
 
 const RIVER_MODULES = [
-  RvButtonModule
+  RvButtonModule,
+  RvSidenavModule
 ];
 
 @NgModule({
-  imports: [ RvButtonModule.forRoot() ],
+  imports: [
+    RvButtonModule.forRoot(),
+    RvSidenavModule.forRoot()
+  ],
   exports: RIVER_MODULES
 })
 export class RiverRootModule { }
