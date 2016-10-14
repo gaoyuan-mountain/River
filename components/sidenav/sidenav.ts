@@ -221,11 +221,11 @@ export class RvSidenav {
  * <rv-sidenav-layout> component
  */
 @Component({
-  selector: 'rv-sidenav-layout], [rv-sidenav-layout]',
+  selector: 'rv-sidenav-layout, [rv-sidenav-layout]',
   templateUrl: './sidenav.html',
   styles: [
     require('./sidenav.scss'),
-    require('./sidenav-transition.scss')
+    require('./sidenav-transitions.scss')
   ],
   encapsulation: ViewEncapsulation.None
 })

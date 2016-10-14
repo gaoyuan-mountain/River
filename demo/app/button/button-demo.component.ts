@@ -3,11 +3,10 @@ import { Router } from '@angular/router';
 
 @Component({
   selector: 'demo-button',
-  template: `
-    <a rv-button>abc</a>
-    <rv-sidenav>def</rv-sidenav>
-  `,
-  styles: []
+  templateUrl: './button-demo.html',
+  styles: [
+    require('./button-demo.scss')
+  ]
 })
 export class ButtonDemoComponent {
   constructor(private router: Router) { }

@@ -1,0 +1,14 @@
+@import '../_all-theme';
+
+
+// Include non-theme styles for core.
+@include rv-core();
+
+// Define a theme.
+$primary: rv-palette($rv-pink, 700, 500, 900);
+$accent:  rv-palette($rv-blue-grey, A200, A100, A400);
+
+$theme: rv-dark-theme($primary, $accent);
+
+// Include all theme styles for the components.
+@include river-theme($theme);

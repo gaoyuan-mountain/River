@@ -1,0 +1,15 @@
+<rv-sidenav-layout class="demo-sidenav-layout">
+  <rv-sidenav #start (open)="myinput.focus()" mode="side" opened={{true}}>
+    Start Side Drawer
+    <br>
+    <button rv-button (click)="start.close()">Close</button>
+    <br>
+    <button rv-button
+            (click)="start.mode = (start.mode == 'push' ? 'over' : (start.mode == 'over' ? 'side' : 'push'))">Toggle Mode</button>
+    <div>Mode: {{start.mode}}</div>
+    <br>
+  </rv-sidenav>
+  sssssssssssssssssssssssssssssssssssssssssssss
+</rv-sidenav-layout>
+
+<h2>Content after Sidenav</h2>

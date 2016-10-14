@@ -1,0 +1,10 @@
+// Import all the theming functionality.
+@import '../_core';
+@import '../../sidenav/_sidenav-theme';
+
+
+// Create a theme.
+@mixin river-theme($theme) {
+  @include rv-core-theme($theme);
+  @include rv-sidenav-theme($theme);
+}
