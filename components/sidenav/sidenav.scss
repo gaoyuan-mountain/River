@@ -1,0 +1,112 @@
+@import '../core/style/_variables';
+@import '../core/style/_elevation';
+@import '../core/style/_sidenav-common';
+
+// Mixin to help with defining LTR/RTL 'transform: translate3d()' values()
+// @param $open The translation value when the sidenav is opened.
+// @param $close The translation value when the sidenav is closed.
+
+@mixin rv-sidenav-transition($open, $close) {
+  transform: translate3d($close, 0, 0);
+
+  &.rv-sidenav-closed {
+    visibility: hidden;
+  }
+
+  &.rv-sidenav-closing {
+    transform: translate3d($close, 0, 0);
+    will-change: transform;
+  }
+
+  &.rv-sidenav-opening {
+    @include rv-elevation(1);
+    visibility: visible;
+    transform: translate3d($open, 0, 0);
+    will-change: transform;
+  }
+
+  &.rv-sidenav-opened {
+    @include rv-elevation(1);
+    transform: translate3d($open, 0, 0);
+  }
+}
+
+// Mixin that creates a new stacking context.
+@mixin rv-sidenav-stacking-context {
+  position: relative;
+  transform: translate3d(0, 0, 0);
+}
+
+rv-sidenav-layout {
+  @include rv-sidenav-stacking-context();
+
+  box-sizing: border-box;
+  -webkit-overflow-scrolling: touch;
+
+  display: block;
+
+  overflow: hidden;
+
+  &[fullscreen] {
+    @include rv-fullscreen();
+
+    &.rv-sidenav-opened {
+      overflow: hidden;
+    }
+  }
+}
+
+.rv-sidenav-backdrop {
+  @include rv-fullscreen();
+
+  display: block;
+  z-index: 2;
+  visibility: hidden;
+
+  &.rv-sidenav-shown {
+    visibility: visible;
+  }
+}
+
+.rv-sidenav-content {
+  @include rv-sidenav-stacking-context();
+
+  display: block;
+  height: 100%;
+  overflow: auto;
+}
+
+rv-sidenav {
+  @include rv-sidenav-stacking-context();
+
+  display: block;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  z-index: 3;
+  min-width: 5%;
+  overflow-y: auto;
+
+  @include rv-sidenav-transition(0, -100%);
+
+  &.rv-sidenav-side {
+    z-index: 1;
+  }
+
+  &.rv-sidenav-end {
+    right: 0;
+
+    @include rv-sidenav-transition(0, 100%);
+  }
+
+  [dir='rtl'] & {
+    @include rv-sidenav-transition(0, 100%);
+
+    &.rv-sidenav-end {
+      left: 0;
+      right: auto;
+
+      @include rv-sidenav-transition(0, -100%);
+    }
+  }
+}

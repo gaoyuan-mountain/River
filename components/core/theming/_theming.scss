@@ -1,0 +1,70 @@
+@import 'palette';
+
+
+// For a given hue in a palette, return the contrast color from the map of contrast palettes.
+// @param $color-map
+// @param $hue
+@function rv-contrast($palette, $hue) {
+  @return map-get(map-get($palette, contrast), $hue);
+}
+
+
+// Creates a map of hues to colors for a theme. This is used to define a theme palette in terms
+// of the Material Design hues.
+// @param $color-map
+// @param $primary
+// @param $lighter
+@function rv-palette($base-palette, $default: 500, $lighter: 100, $darker: 700) {
+  $result: map_merge($base-palette, (
+    default: map-get($base-palette, $default),
+    lighter: map-get($base-palette, $lighter),
+    darker: map-get($base-palette, $darker),
+
+    default-contrast: rv-contrast($base-palette, $default),
+    lighter-contrast: rv-contrast($base-palette, $lighter),
+    darker-contrast: rv-contrast($base-palette, $darker)
+  ));
+
+  @each $hue, $color in $base-palette {
+    $result: map_merge($result, (
+      '#{$hue}-contrast': rv-contrast($base-palette, $hue)
+    ));
+  }
+
+  @return $result;
+}
+
+@function rv-color($palette, $hue: default, $opacity: 1) {
+  @if type-of($hue) == number and $hue >= 0 and $hue <= 1 {
+    @return rv-color($palette, default, $hue);
+  }
+
+  $color: map-get($palette, $hue);
+  $opacity: if(opacity($color) < 1, opacity($color), $opacity);
+
+  @return rgba($color, $opacity);
+}
+
+
+@function rv-light-theme($primary, $accent, $warn: rv-palette($rv-red)) {
+  @return (
+    primary: $primary,
+    accent: $accent,
+    warn: $warn,
+    is-dark: false,
+    foreground: $rv-light-theme-foreground,
+    background: $rv-light-theme-background,
+  );
+}
+
+
+@function rv-dark-theme($primary, $accent, $warn: rv-palette($rv-red)) {
+  @return (
+    primary: $primary,
+    accent: $accent,
+    warn: $warn,
+    is-dark: true,
+    foreground: $rv-dark-theme-foreground,
+    background: $rv-dark-theme-background,
+  );
+}

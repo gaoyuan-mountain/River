@@ -1,0 +1,13 @@
+@import '../core/style/_variables';
+
+rv-sidenav {
+  transition: transform $swift-ease-out-duration $swift-ease-out-timing-function;
+}
+
+.rv-sidenav-content {
+  transition: transform $swift-ease-out-duration $swift-ease-out-timing-function;
+}
+
+.rv-sidenav-backdrop.rv-sidenav-shown {
+  transition: background-color $swift-ease-out-duration $swift-ease-out-timing-function;
+}

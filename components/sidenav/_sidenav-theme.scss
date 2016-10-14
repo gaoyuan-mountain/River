@@ -1,0 +1,34 @@
+@import '../core/theming/_palette';
+@import '../core/theming/_theming';
+
+@mixin rv-sidenav-theme($theme) {
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  $warn: map-get($theme, warn);
+  $background: map-get($theme, background);
+  $foreground: map-get($theme, foreground);
+
+  // We use invert() here to have the darken the background color expected to use.
+  $sidenav-backdrop-color: invert(rv-color($background, card, 0.6)) !default;
+  $sidenav-background-color: rv-color($background, dialog) !default;
+  $sidenav-layout-background-color:  rv-color($background, background) !default;
+  $sidenav-push-background-color: rv-color($background, dialog) !default;
+
+  rv-sidenav-layout {
+    background-color: $sidenav-layout-background-color;
+    color: rv-color($foreground, text);
+  }
+
+  rv-sidenav {
+    background-color: $sidenav-background-color;
+    color: rv-color($foreground, text);
+
+    &.md-sidenav-push {
+      background-color: $sidenav-push-background-color;
+    }
+  }
+
+  .rv-sidenav-backdrop.rv-sidenav-shown {
+    background-color: $sidenav-backdrop-color;
+  }
+}

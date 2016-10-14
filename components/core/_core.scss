@@ -1,0 +1,14 @@
+@import 'style/elevation';
+
+
+@mixin rv-core() {
+  @for $zValue from 0 through 24 {
+    .rv-elevation-z#{$zValue} {
+      @include rv-elevation($zValue);
+    }
+  }
+}
+
+@mixin rv-core-theme($theme) {
+  
+}
