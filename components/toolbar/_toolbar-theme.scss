@@ -13,7 +13,7 @@
   $background: map-get($theme, background);
   $foreground: map-get($theme, foreground);
 
-  rv-toobar {
+  rv-toolbar {
     background: rv-color($background, app-bar);
     color: rv-color($foreground, text);
 
