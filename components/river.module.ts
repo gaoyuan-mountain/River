@@ -2,16 +2,19 @@ import { NgModule, ModuleWithProviders } from '@angular/core';
 
 import { RvButtonModule } from './button';
 import { RvSidenavModule } from './sidenav';
+import { RvToolbarModule } from './toolbar';
 
 const RIVER_MODULES = [
   RvButtonModule,
-  RvSidenavModule
+  RvSidenavModule,
+  RvToolbarModule
 ];
 
 @NgModule({
   imports: [
     RvButtonModule.forRoot(),
-    RvSidenavModule.forRoot()
+    RvSidenavModule.forRoot(),
+    RvToolbarModule.forRoot()
   ],
   exports: RIVER_MODULES
 })

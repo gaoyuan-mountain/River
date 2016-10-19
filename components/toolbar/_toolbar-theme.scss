@@ -1,0 +1,32 @@
+@import '../core/theming/_palette';
+@import '../core/theming/_theming';
+
+@mixin _rv-toolbar-color($palette) {
+  background: rv-color($palette);
+  color: rv-color($palette, default-contrast);
+}
+
+@mixin rv-toolbar-theme($theme) {
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  $warn: map-get($theme, warn);
+  $background: map-get($theme, background);
+  $foreground: map-get($theme, foreground);
+
+  rv-toobar {
+    background: rv-color($background, app-bar);
+    color: rv-color($foreground, text);
+
+    &.rv-primary {
+      @include _rv-toolbar-color($primary);
+    }
+
+    &.rv-accent {
+      @include _rv-toolbar-color($accent);
+    }
+
+    &.rv-warn {
+      @include _rv-toolbar-color($warn);
+    }
+  }
+}

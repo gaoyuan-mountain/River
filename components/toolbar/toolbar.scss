@@ -1,0 +1,22 @@
+@import '../core/style/_variables';
+
+$rv-toolbar-min-height: 64px !default;
+$rv-toolbar-font-size: 20px !default;
+$rv-toolbar-padding: 16px !default;
+
+rv-toolbar {
+  display: flex;
+  box-sizing: border-box;
+
+  width: 100%;
+  min-height: $rv-toolbar-min-height;
+
+  font-size: $rv-toolbar-font-size;
+  font-weight: 400;
+  font-family: $rv-font-family;
+
+  padding: 0 $rv-toolbar-padding;
+
+  flex-direction: row;
+  align-items: center;
+}
