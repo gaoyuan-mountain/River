@@ -2,8 +2,9 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'rv-app',
-  template: `
-    <router-outlet></router-outlet>
-  `
+  templateUrl: './app.html',
+  styles: [
+    require('./app.scss')
+  ]
 })
 export class AppComponent { }

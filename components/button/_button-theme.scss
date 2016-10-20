@@ -1,0 +1,71 @@
+@import '../core/theming/theming';
+
+@mixin _rv-button-focus-color($theme) {
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  $warn: map-get($theme, warn);
+
+  &.rv-primary::after {
+    background-color: rv-color($primary, 0.12);
+  }
+
+  &.rv-accent::after {
+    background-color: rv-color($accent, 0.12);
+  }
+
+  &.rv-warn::after {
+    background-color: rv-color($warn, 0.12);
+  }
+}
+
+@mixin _rv-button-theme-color($theme, $property, $color: 'default') {
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  $warn: map-get($theme, warn);
+  $background: map-get($theme, background);
+  $foreground: map-get($theme, foreground);
+
+  &.rv-primary {
+    #{$property}: rv-color($primary, $color);
+  }
+  &.rv-accent {
+    #{$property}: rv-color($accent, $color);
+  }
+  &.rv-warn {
+    #{$property}: rv-color($warn, $color);
+  }
+
+  &.rv-primary, &.rv-accent, &.rv-warn, &[disabled] {
+    &[disabled] {
+      $palette: if($property == 'color', $foreground, $background);
+      #{$property}: rv-color($palette, disabled-button);
+    }
+  }
+}
+
+@mixin rv-button-theme($theme) {
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  $warn: map-get($theme, warn);
+  $background: map-get($theme, background);
+  $foreground: map-get($theme, foreground);
+
+  [rv-button], [rv-icon-button], [rv-raised-button] {
+    &.rv-button-focus {
+      @include _rv-button-focus-color($theme);
+    }
+
+    @include _rv-button-theme-color($theme, 'color');
+    background: transparent;
+
+    &:hover {
+      @include _rv-button-focus-color($theme);
+    }
+  }
+
+  [rv-raised-button] {
+    @include _rv-button-theme-color($theme, 'color', default-contrast);
+    @include _rv-button-theme-color($theme, 'background-color');
+    background-color: rv-color($background, background);
+  }
+}

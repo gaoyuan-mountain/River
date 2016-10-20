@@ -1,5 +1,6 @@
 // Import all the theming functionality.
 @import '../_core';
+@import '../../button/_button-theme';
 @import '../../sidenav/_sidenav-theme';
 @import '../../toolbar/_toolbar-theme';
 
@@ -7,6 +8,7 @@
 // Create a theme.
 @mixin river-theme($theme) {
   @include rv-core-theme($theme);
+  @include rv-button-theme($theme);
   @include rv-sidenav-theme($theme);
   @include rv-toolbar-theme($theme);
 }
