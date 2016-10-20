@@ -1,14 +1,25 @@
-<rv-sidenav-layout class="demo-sidenav-layout">
-  <rv-sidenav #start (open)="myinput.focus()" mode="side" opened={{true}}>
-    <rv-toolbar><div class="sidenav-logo"></div></rv-toolbar>
-    <button rv-button (click)="start.close()">Close</button>
-    <br>
-    <button rv-button
-            (click)="start.mode = (start.mode == 'push' ? 'over' : (start.mode == 'over' ? 'side' : 'push'))">Toggle Mode</button>
-    <div>Mode: {{start.mode}}</div>
-    <br>
-  </rv-sidenav>
-  sssssssssssssssssssssssssssssssssssssssssssss
-</rv-sidenav-layout>
+<div class="demo-button">
+  <h1>Button</h1>
 
-<h2>Content after Sidenav</h2>
+  <section>
+    <div class="usage-category">
+      <h2>Flat:</h2>
+      <div>
+        <a rv-button class="rv-primary">PRIMARY</a>
+        <a rv-button class="rv-accent">ACCENT</a>
+        <a rv-button class="rv-warn">WARN</a>
+        <a rv-button class="rv-primary" disabled>DISABLED</a>
+      </div>
+    </div>
+
+    <div class="usage-category">
+      <h2>Raised:</h2>
+      <div>
+        <button rv-raised-button class="rv-primary">PRIMARY</button>
+        <button rv-raised-button class="rv-accent">ACCENT</button>
+        <button rv-raised-button class="rv-warn">WARN</button>
+        <button rv-raised-button class="rv-primary" disabled>DISABLED</button>
+      </div>
+    </div>
+  </section>
+</div>

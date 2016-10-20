@@ -2,7 +2,7 @@ import { Component, ViewEncapsulation, OnChanges, ElementRef, NgModule, ModuleWi
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: '[rv-button]:not(a)',
+  selector: '[rv-button]:not(a), a[rv-raised-button]:not(a)',
   templateUrl: 'button.html',
   encapsulation: ViewEncapsulation.None,
   styles: [
@@ -16,7 +16,7 @@ export class RvButton {
 
 
 @Component({
-  selector: 'a[rv-button]',
+  selector: 'a[rv-button], a[rv-raised-button]',
   inputs: ['disabled'],
   templateUrl: 'button.html',
   encapsulation: ViewEncapsulation.None,
@@ -40,7 +40,6 @@ export class RvAnchor extends RvButton implements OnChanges {
   }
 
   onClick(event: any) {
-    console.log('aaaaa');
     if(this.disabled) {
       event.preventDefault();
     }

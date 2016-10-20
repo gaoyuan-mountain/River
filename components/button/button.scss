@@ -1,3 +1,47 @@
-.rv-button-wrapper {
-  color: red;
+@import './_button-base';
+
+[rv-button], [rv-icon-button] {
+  @extend %rv-button-base;
+
+  &:hover {
+    @include rv-button-focus();
+  }
+
+  &[disabled]:hover {
+    &.rv-primary, &.rv-accent, &.rv-warn, &::after {
+      background-color: transparent;
+    }
+  }
+}
+
+[rv-raised-button] {
+  @extend %rv-raised-button;
+}
+
+[rv-icon-button] {
+  min-width: 0;
+  padding: 0;
+
+  width: $rv-icon-button-size;
+  height: $rv-icon-button-size;
+
+  line-height: $rv-icon-button-line-height;
+  border-radius: $rv-icon-button-border-radius;
+
+  .rv-button-wrapper > * {
+    vertical-align: middle;
+  }
+}
+
+.rv-button-ripple {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+
+.rv-button-ripple-round {
+  border-radius: 50%;
+  z-index: 1;
 }

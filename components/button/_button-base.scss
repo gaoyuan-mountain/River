@@ -1,0 +1,86 @@
+@import  '../core/style/_variables';
+@import  '../core/style/_elevation';
+@import  '../core/style/_button-common';
+
+@mixin rv-button-focus {
+  &::after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    content: '';
+    background-color: rgba(black, 0.12);
+    border-radius: inherit;
+    pointer-events: none;
+  }
+}
+
+// Flat and raised button standards
+$rv-button-padding: 0 16px !default;
+$rv-button-min-width: 88px !default;
+$rv-button-margin: 0 !default;
+$rv-button-line-height: 36px !default;
+$rv-button-border-radius: 2px !default;
+
+// Icon Button standards
+$rv-icon-button-size: 40px !default;
+$rv-icon-button-border-radius: 50% !default;
+$rv-icon-button-line-height: 24px !default;
+
+%rv-button-base {
+  box-sizing: border-box;
+  position: relative;
+
+  // Reset browser <button> styles
+  @include rv-button-reset();
+
+  // Make anchors render like buttons
+  display: inline-block;
+  white-space: nowrap;
+  text-decoration: none;
+  vertical-align: baseline;
+
+  // Typography
+  font-size: $rv-body-font-size-base;
+  font-family: $rv-font-family;
+  font-weight: 500;
+  color: currentColor;
+  text-align: center;
+
+  // Sizing
+  margin: $rv-button-margin;
+  min-width: $rv-button-min-width;
+  line-height: $rv-button-line-height;
+  padding: $rv-button-padding;
+  border-radius: $rv-button-border-radius;
+
+  &[disabled] {
+    cursor: default;
+  }
+
+  &.rv-button-focus {
+    @include rv-button-focus();
+  }
+}
+
+%rv-raised-button {
+  @extend %rv-button-base;
+
+  @include rv-elevation(2);
+
+  // Force hardware acceleration.
+  transform: translate3d(0, 0, 0);
+
+  // Animation.
+  transition: background $swift-ease-out-duration $swift-ease-out-timing-function,
+              rv-elevation-transition-property-value();
+
+  &:active {
+    @include rv-elevation(8);
+  }
+
+  &[disabled] {
+    box-shadow: none;
+  }
+}
