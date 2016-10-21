@@ -6,7 +6,7 @@
 
 // Define a theme.
 $primary: rv-palette($rv-green);
-$accent:  rv-palette($rv-pink, A200, A100, A400);
+$accent:  rv-palette($rv-orange, A200, A100, A400);
 
 $theme: rv-light-theme($primary, $accent);
 

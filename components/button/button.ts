@@ -2,7 +2,7 @@ import { Component, ViewEncapsulation, OnChanges, ElementRef, NgModule, ModuleWi
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: '[rv-button]:not(a), a[rv-raised-button]:not(a)',
+  selector: '[rv-button]:not(a), [rv-raised-button]:not(a)',
   templateUrl: 'button.html',
   encapsulation: ViewEncapsulation.None,
   styles: [
