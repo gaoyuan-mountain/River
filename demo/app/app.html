@@ -1,10 +1,10 @@
 <rv-sidenav-layout class="demo-sidenav-layout">
-  <rv-sidenav #start (open)="myinput.focus()" mode="side" opened={{true}}>
-    <rv-toolbar><div class="sidenav-logo"></div></rv-toolbar>
+  <rv-sidenav #start mode="side" opened={{true}}>
+    <rv-toolbar class="global-sidnav-toolbar"><div class="sidenav-logo"></div></rv-toolbar>
     <div class="navigator-wrap">
       <div class="navigator-header">DEMOS</div>
-      <div class="navigator"><a>Button</a></div>
-      <div class="navigator"><a>Sidenav</a></div>
+      <div class="navigator"><a routerLink="/button" routerLinkActive="active">Button</a></div>
+      <div class="navigator"><a routerLink="/sidenav" routerLinkActive="active">Sidenav</a></div>
       <div class="navigator"><a>Toolbar</a></div>
     </div>
   </rv-sidenav>

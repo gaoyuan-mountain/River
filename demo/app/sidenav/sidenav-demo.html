@@ -1,0 +1,38 @@
+<div class="demo-sidenav">
+  <div class="content-contraint">
+    <rv-toolbar>SIDENAV</rv-toolbar>
+
+    <section class="demo-section">
+      <rv-toolbar color="primary">Basic Usage</rv-toolbar>
+      <rv-sidenav-layout>
+        <rv-sidenav #left mode="side" opened={{true}}>
+          <rv-toolbar>SIDENAV LEFT</rv-toolbar>
+          <p>This sidenav is locked open on your device.</p>
+        </rv-sidenav>
+
+        <div class="section-content">
+          <button rv-raised-button class="rv-accent" (click)="right.open()">OPEN SIDENAV RIGHT</button>
+        </div>
+
+        <rv-sidenav #right mode="over" align="end">
+          <rv-toolbar>SIDENAV Right</rv-toolbar>
+          <p class="close-constraint"><button rv-raised-button class="rv-warn" (click)="right.close()">CLOSE</button></p>
+        </rv-sidenav>
+      </rv-sidenav-layout>
+    </section>
+
+    <!--
+    <section class="demo-section">
+      <rv-toolbar color="primary">Sidenav without backdrop</rv-toolbar>
+      <rv-sidenav-layout>
+        <rv-sidenav #leftWithoutBackdrop mode="side" opened={{true}}>
+          <rv-toolbar>SIDENAV WITHOUT BACKDROP</rv-toolbar>
+        </rv-sidenav>
+        <div class="section-content">
+          <button rv-raised-button class="rv-accent" (click)="leftWithoutBackdrop.toggle()">TOGGLE SIDENAV</button>
+        </div>
+      </rv-sidenav-layout>
+    </section>
+    -->
+  </div>
+</div>

@@ -1,0 +1,35 @@
+.demo-sidenav {
+  section {
+    width: 800px;
+    height: 400px;
+    position: relative;
+    margin: 50px;
+  }
+
+  rv-sidenav-layout {
+    height: 334px;
+  }
+
+  rv-sidenav {
+    width: 200px;
+
+    rv-toolbar {
+      font-size: 16px;
+    }
+
+    p {
+      padding: 20px;
+      line-height: 2;
+    }
+  }
+
+  .section-content {
+    text-align: center;
+    margin-top: 100px;
+  }
+
+  .close-constraint {
+    text-align: center;
+    margin-top: 50px;
+  }
+}

@@ -1,0 +1,13 @@
+.demo-button {
+  section {
+    padding: 10px 50px;
+
+    h2 {
+      margin-bottom: 20px;
+    }
+  }
+
+  [rv-button], [rv-raised-button] {
+    margin-right: 30px;
+  }
+}

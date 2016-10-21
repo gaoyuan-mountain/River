@@ -1,4 +1,27 @@
 // @import '../../../components/core/theming/prebuilt/pink-bluegrey.scss';
 // @import '../../../components/core/theming/prebuilt/purple-green.scss';
-@import '../../../components/core/theming/prebuilt/indigo-pink.scss';
+// @import '../../../components/core/theming/prebuilt/indigo-pink.scss';
+@import '../../../components/core/theming/prebuilt/green.scss';
 // @import '../../../components/core/theming/prebuilt/deeppurple-amber.scss';
+
+.content-constraint {
+  h2 {
+    font-size: 16px;
+  }
+
+  section {
+    margin-top: 30px;
+  }
+}
+
+a {
+  &.active {
+    color: #4caf50 !important;
+    font-weight: bold;
+  }
+}
+
+.demo-section {
+  box-shadow: 0 1px 3px 0 rgba(0,0,0,.2),0 1px 1px 0 rgba(0,0,0,.14),0 2px 1px -1px rgba(0,0,0,.12);
+  background: #fff;
+}
