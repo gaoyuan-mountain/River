@@ -4,6 +4,7 @@ import { BrowserModule }  from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { ButtonDemoModule } from './button/button-demo.module';
 import { SidenavDemoModule } from './sidenav/sidenav-demo.module';
+import { ToolbarDemoModule } from './toolbar/toolbar-demo.module';
 import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
 import { routing } from './app.routing';
@@ -16,6 +17,7 @@ import '../public/styles/common.scss';
     SharedModule.forRoot(),
     ButtonDemoModule,
     SidenavDemoModule,
+    ToolbarDemoModule,
     CoreModule.forRoot({}),
     routing
   ],
