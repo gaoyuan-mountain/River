@@ -1,5 +1,12 @@
 .demo-button {
-  section {
+  .demo-section {
+    width: 800px;
+    height: 400px;
+    position: relative;
+    margin: 50px;
+  }
+
+  .usage-category {
     padding: 10px 50px;
 
     h2 {
