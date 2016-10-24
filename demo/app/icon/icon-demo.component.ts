@@ -2,12 +2,12 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'demo-toolbar',
-  templateUrl: './toolbar-demo.html',
+  selector: 'demo-icon',
+  templateUrl: './icon-demo.html',
   styles: [
-    require('./toolbar-demo.scss')
+    require('./icon-demo.scss')
   ]
 })
-export class ToolbarDemoComponent {
+export class IconDemoComponent {
   constructor(private router: Router) { }
 }

@@ -1,0 +1,11 @@
+@import '../core/style/_variables';
+
+$rv-icon-size: 24px !default;
+
+rv-icon {
+  background-repeat: no-repeat;
+  display: inline-block;
+  fill: currenColor;
+  height: $rv-icon-size;
+  width: $rv-icon-size;
+}

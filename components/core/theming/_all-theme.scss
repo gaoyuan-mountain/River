@@ -3,6 +3,7 @@
 @import '../../button/_button-theme';
 @import '../../sidenav/_sidenav-theme';
 @import '../../toolbar/_toolbar-theme';
+@import '../../icon/_icon-theme';
 
 
 // Create a theme.
@@ -11,4 +12,5 @@
   @include rv-button-theme($theme);
   @include rv-sidenav-theme($theme);
   @include rv-toolbar-theme($theme);
+  @include rv-icon-theme($theme);
 }
