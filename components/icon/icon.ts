@@ -26,7 +26,7 @@ export class RvIconInvalidNameError extends RvError {
 @Component({
   template: `<ng-content></ng-content>`,
   selector: 'rv-icon',
-  styleUrls: [
+  styles: [
     require('./icon.scss')
   ],
   host: {
