@@ -33,7 +33,7 @@ const iconKey = (namespace: string, name: string) => namespace + ':' + name;
 @Injectable()
 export class RvIconRegistry {
   private _svgIconConfigs = new Map<string, SvgIconConfig>();
-  private _iconSetConfigs = new Map<string, SvgIconConfig>();
+  private _iconSetConfigs = new Map<string, SvgIconConfig[]>();
   private _cachedIconsByUrl = new Map<string, SVGElement>();
   private _inProgressUrlFetches = new Map<string, Observable<string>>();
   private _fontCssClassesByAlias = new Map<string, string>();
@@ -48,6 +48,20 @@ export class RvIconRegistry {
   addSvgIconInNamespace(namespace: string, iconName: string, url: string): this {
     const key = iconKey(namespace, iconName);
     this._svgIconConfigs.set(key, new SvgIconConfig(url));
+    return this;
+  }
+
+  addSvgIconSet(url: string): this {
+    return this.addSvgIconSetInNamespace('', url);
+  }
+
+  addSvgIconSetInNamespace(namespace: string, url: string): this {
+    const config = new SvgIconConfig(url);
+    if (this._iconSetConfigs.has(namespace)) {
+      this._iconSetConfigs.get(namespace).push(config);
+    } else {
+      this._iconSetConfigs.set(namespace, [config]);
+    }
     return this;
   }
 
@@ -75,8 +89,8 @@ export class RvIconRegistry {
     }
 
     return this._loadSvgIconFromConfig(new SvgIconConfig(url))
-      .do(svg => this._cachedIconsByUrl.set(url, svg))
-      .map(svg => cloneSvg(svg));
+      .do(svg => this._cachedIconsByUrl.set(url, <SVGElement>svg))
+      .map(svg => cloneSvg(<SVGElement>svg));
   }
 
   getNamedSvgIcon(name: string, namespace = ''): Observable<SVGElement> {
@@ -98,8 +112,8 @@ export class RvIconRegistry {
       return Observable.of(cloneSvg(config.svgElement));
     } else {
       return this._loadSvgIconFromConfig(config)
-        .do(svg => config.svgElement = svg)
-        .map(svg => cloneSvg(svg));
+        .do(svg => config.svgElement = <SVGElement>svg)
+        .map(svg => cloneSvg(<SVGElement>svg));
     }
   }
 
@@ -119,7 +133,7 @@ export class RvIconRegistry {
           })
           .do(svg => {
             if (svg) {
-              iconSetConfig.svgElement = svg;
+              iconSetConfig.svgElement = <SVGElement>svg;
             }
           }));
 
@@ -218,6 +232,6 @@ export class RvIconRegistry {
   }
 }
 
-function cloneSvg(svg: SVGElement): SVGElement {
+function cloneSvg(svg: SVGElement) {
   return <SVGElement> svg.cloneNode(true);
 }

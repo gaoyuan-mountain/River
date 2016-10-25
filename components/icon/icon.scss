@@ -5,7 +5,31 @@ $rv-icon-size: 24px !default;
 rv-icon {
   background-repeat: no-repeat;
   display: inline-block;
-  fill: currenColor;
+  fill: currentColor;
   height: $rv-icon-size;
   width: $rv-icon-size;
+}
+
+/* fallback */
+@font-face {
+  font-family: 'River Icons';
+  font-style: normal;
+  font-weight: 400;
+  src: local('River Icons'), local('MaterialIcons-Regular'), url(https://fonts.gstatic.com/s/materialicons/v18/2fcrYFNaTjcS6g4U3t-Y5ZjZjT5FdEJ140U2DJYC3mY.woff2) format('woff2');
+}
+
+.rv-icons {
+  font-family: 'River Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-feature-settings: 'liga';
+  -webkit-font-smoothing: antialiased;
 }

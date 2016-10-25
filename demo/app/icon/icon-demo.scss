@@ -1,6 +1,28 @@
-.demo-section {
-  width: 800px;
-  height: 400px;
-  position: relative;
-  margin: 50px;
+.demo-icon {
+  .demo-section {
+    width: 800px;
+    height: 400px;
+    position: relative;
+    margin: 50px;
+
+    .usage-category {
+      padding: 10px 50px;
+
+      h2 {
+        margin-bottom: 20px;
+      }
+
+      rv-icon.green {
+        color: green;
+      }
+
+      rv-icon.orange {
+        color: #ffab40;
+      }
+
+      rv-icon.red {
+        color: #f44336;
+      }
+    }
+  }
 }
