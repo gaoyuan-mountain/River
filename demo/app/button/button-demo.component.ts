@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { RvIconRegistry } from '../../../components/icon';
 
 @Component({
   selector: 'demo-button',
@@ -9,5 +10,7 @@ import { Router } from '@angular/router';
   ]
 })
 export class ButtonDemoComponent {
-  constructor(private router: Router) { }
+  constructor(private router: Router, rvIconRegistry: RvIconRegistry) {
+    rvIconRegistry.addSvgIcon('menu', require('../../public/svg/menu.svg'))
+  }
 }

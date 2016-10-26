@@ -5,9 +5,12 @@ $rv-toolbar-font-size: 20px !default;
 $rv-toolbar-padding: 16px !default;
 
 rv-toolbar {
-  display: flex;
   box-sizing: border-box;
-
+  display: flex;
+  flex-direction: row;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  align-items: center;
   width: 100%;
   min-height: $rv-toolbar-min-height;
 
@@ -16,7 +19,16 @@ rv-toolbar {
   font-family: $rv-font-family;
 
   padding: 0 $rv-toolbar-padding;
+}
 
+rv-toolbar > [rv-button]:first-child {
+    margin-left: -8px;
+}
+
+rv-toolbar-row {
+  display: flex;
   flex-direction: row;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
   align-items: center;
 }
