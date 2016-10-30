@@ -1,0 +1,84 @@
+@import '../core/theming/theming';
+@import '../core/style/elevation';
+@import '../core/style/variables';
+
+$rv-checkbox-size: $rv-toggle-size !default;
+$rv-checkbox-mark-stroke-size: 2/15 * $rv-checkbox-size !default;
+$rv-checkbox-border-width: 2px;
+$rv-checkbox-transition-duration: 90ms;
+$rv-checkbox-item-spacing: $rv-toggle_padding;
+
+$_rv-checkbox-mark-path-length: 22.910259;
+$_rv-checkbox-indeterminate-checked-easing-function: cubic-bezier(0.14, 0, 0, 1);
+
+@keyframes rv-checkbox-fade-in-background {
+  0% {
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes rv-checkbox-fade-out-background {
+  0%, 50% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes rv-checkbox-unchecked-checked-checkmark-path {
+  0%, 50% {
+    stroke-dashoffset: $_rv-checkbox-mark-path-length;
+  }
+
+  50% {
+    animation-timing-function: $rv-linear-out-slow-in-timing-function;
+  }
+
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes rv-checkbox-unchecked-indeterminate-mixedmark {
+  0%, 68.2% {
+    transform: scaleX(0);
+  }
+
+  68.2% {
+    animation-timing-function: cubic-bezier(0, 0, 0, 1);
+  }
+
+  100% {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes rv-checkbox-checked-unchecked-checkmark-path {
+  from {
+    animation-timing-function: $rv-fast-out-linear-in-timing-function;
+    stroke-dashoffset: 0;
+  }
+
+  to {
+    stroke-dashoffset: $_rv-checkbox-mark-path-length * -1;
+  }
+}
+
+@keyframes rv-checkbox-checked-indeterminate-checkmark {
+  from {
+    animation-timing-function: $rv-linear-out-slow-in-timing-function;
+    opacity: 1;
+    transform: rotate(0deg);
+  }
+
+  to {
+    opacity: 0;
+    transform: rotate(45deg);
+  }
+}
