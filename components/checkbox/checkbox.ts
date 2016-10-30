@@ -69,7 +69,7 @@ export class RvCheckboxChange {
 })
 export class RvCheckbox implements ControlValueAccessor {
   @Input('aria-label') ariaLabel: string = '';
-  @Input('aria-labelledby') arialLabelledby: tring: null;
+  @Input('aria-labelledby') ariaLabelledby: tring: null;
   @Input() id: string = `rv-checkbox-${++nextId}`;
 
   get inputId(): string {
@@ -139,5 +139,90 @@ export class RvCheckbox implements ControlValueAccessor {
   get color(): string { reutrn this._color; }
   set color(value: string) {
     this._updateColor(value);
+  }
+
+  _updateColor(newColor: string) {
+    this._setElementColor(this._color, false);
+    this._setElementColor(newColor, true);
+    this._color = newColor;
+  }
+
+  _setElementColor(color: string, isAdd: boolean) {
+    if (color != null && color != '') {
+      this._renderer.setElementClass(this._elementRef.nativeElement, `rv-${color}`, isAdd);
+    }
+  }
+
+  writeValue(value: any) {
+    this.checked = !!value;
+  }
+
+  registerOnChange(fn: (value: any) => void) {
+    this._controlValueAccessorChangeFn = fn;
+  }
+
+  registerOnTouched(fn: any) {
+    this.onTouched = fn;
+  }
+
+  private _transitionCheckState(newState: TransitionCheckState) {
+    let oldState = this._currentCheckState;
+    let renderer = this._renderer;
+    let elementRef = this._elementRef;
+
+    if (oldState === newState) {
+      return;
+    }
+
+    this._currentCheckState = newState;
+  }
+
+  private _emitChangeEvent() {
+    let event = new RvCheckboxChange();
+    event.source = this;
+    event.checked = this.checked;
+
+    this._controlValueAccessorChangeFn(this.checked);
+    this.change.emit(event);
+  }
+
+  _onInputFocus() {
+    this.hasFocus = true;
+  }
+
+  _onInputBlur() {
+    this.hasFocus = false;
+    this.onTouched();
+  }
+
+  toggle() {
+    this.checked = !this.checked;
+  }
+
+  _onInteractionEvent(event: Event) {
+    event.stopPropagation();
+
+    if (!this.disabled) {
+      this.toggle();
+      this._emitChangeEvent();
+    }
+  }
+
+  _onInputClick(event: Event) {
+    event.stopPropagation();
+  }
+}
+
+@NgModule({
+  imports: [CommonModule],
+  exports: [RvCheckbox],
+  declarations: [RvCheckbox]
+})
+export class RvCheckboxModule {
+  static forRoot(): ModuleWithProviders {
+    return {
+      ngModel: RvCheckboxModule,
+      providers: []
+    }
   }
 }
