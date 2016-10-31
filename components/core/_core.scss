@@ -1,6 +1,18 @@
 @import 'style/elevation';
 
 
+.rv-visually-hidden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  text-transform: none;
+  width: 1px;
+}
+
 @mixin rv-core() {
   @for $zValue from 0 through 24 {
     .rv-elevation-z#{$zValue} {
@@ -10,5 +22,5 @@
 }
 
 @mixin rv-core-theme($theme) {
-  
+
 }

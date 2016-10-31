@@ -6,7 +6,8 @@ export const routes: Routes = [
   { path: 'button', loadChildren: 'app/button/button-demo.module#ButtonDemoModule' },
   { path: 'sidenav', loadChildren: 'app/sidenav/sidenav-demo.module#SidenavDemoModule' },
   { path: 'toolbar', loadChildren: 'app/toolbar/toolbar-demo.module#ToolbarDemoModule' },
-  { path: 'icon', loadChildren: 'app/icon/icon-demo.module#IconDemoModule' }
+  { path: 'icon', loadChildren: 'app/icon/icon-demo.module#IconDemoModule' },
+  { path: 'checkbox', loadChildren: 'app/checkbox/checkbox-demo.module#CheckboxDemoModule' }
 ]
 
 export const routing: ModuleWithProviders = RouterModule.forRoot(routes);

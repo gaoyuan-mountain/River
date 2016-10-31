@@ -1,0 +1,65 @@
+@import '../core/theming/theming';
+
+
+@mixin rv-checkbox-theme($theme) {
+  $is-dark-theme: map-get($theme, is-dark);
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  $warn: map-get($theme, warn);
+  $background: map-get($theme, background);
+
+
+  // The color of the checkbox border.
+  $checkbox-border-color: if($is-dark-theme, rgba(white, 0.7), rgba(black, 0.54)) !default;
+
+  // The color of the checkbox's checkmark / mixedmark.
+  $checkbox-mark-color: rv-color($background, background);
+
+  $white-30pct-opacity-on-dark: #686868;
+  $black-26pct-opacity-on-light: #b0b0b0;
+  $disabled-color: if($is-dark-theme, $white-30pct-opacity-on-dark, $black-26pct-opacity-on-light);
+
+  .rv-checkbox-frame {
+    border-color: $checkbox-border-color;
+  }
+
+  .rv-checkbox-checkmark {
+    fill: $checkbox-mark-color;
+  }
+
+  .rv-checkbox-checkmark-path {
+    stroke: $checkbox-mark-color !important;
+  }
+
+  .rv-checkbox-mixedmark {
+    background-color: $checkbox-mark-color;
+  }
+
+  .rv-checkbox-indeterminate, .rv-checkbox-checked {
+    &.rv-primary .rv-checkbox-background {
+      background-color: rv-color($primary, 500);
+    }
+
+    &.rv-accent .rv-checkbox-background {
+      background-color: rv-color($accent, 500);
+    }
+
+    &.rv-warn .rv-checkbox-background {
+      background-color: rv-color($warn, 500);
+    }
+  }
+
+  .rv-checkbox-disabled {
+    &.rv-checkbox-checked, &.rv-checkbox-indeterminate {
+      .rv-checkbox-background {
+        background-color: $disabled-color;
+      }
+    }
+
+    &:not(.rv-checkbox-checked) {
+      .rv-checkbox-frame {
+        border-color: $disabled-color;
+      }
+    }
+  }
+}
