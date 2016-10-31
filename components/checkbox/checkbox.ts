@@ -65,11 +65,11 @@ export class RvCheckboxChange {
   },
   providers: [RV_CHECKBOX_CONTROL_VALUE_ACCESSOR],
   encapsulation: ViewEncapsulation.None,
-  ChangeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class RvCheckbox implements ControlValueAccessor {
   @Input('aria-label') ariaLabel: string = '';
-  @Input('aria-labelledby') ariaLabelledby: tring: null;
+  @Input('aria-labelledby') ariaLabelledby: string = null;
   @Input() id: string = `rv-checkbox-${++nextId}`;
 
   get inputId(): string {
@@ -91,7 +91,7 @@ export class RvCheckbox implements ControlValueAccessor {
   set disabled(value) { this._disabled = coerceBooleanProperty(value); }
 
   @Input() tabIndex: number = 0;
-  @input() name: string = null;
+  @Input() name: string = null;
 
   @Output() change: EventEmitter<RvCheckboxChange> = new EventEmitter<RvCheckboxChange>();
 
@@ -105,9 +105,10 @@ export class RvCheckbox implements ControlValueAccessor {
 
   hasFocus: boolean = false;
 
-  constructor(private _renderer: Renderer, private _elementRef: ElementRef) => {
-    this,color = 'primary';
+  constructor(private _renderer: Renderer, private _elementRef: ElementRef) {
+    this.color = 'primary';
   }
+
   @Input()
   get checked() { return this._checked; }
   set checked(checked: boolean) {
@@ -136,7 +137,7 @@ export class RvCheckbox implements ControlValueAccessor {
   }
 
   @Input()
-  get color(): string { reutrn this._color; }
+  get color(): string { return this._color; }
   set color(value: string) {
     this._updateColor(value);
   }
@@ -214,14 +215,14 @@ export class RvCheckbox implements ControlValueAccessor {
 }
 
 @NgModule({
-  imports: [CommonModule],
-  exports: [RvCheckbox],
-  declarations: [RvCheckbox]
+  imports: [ CommonModule ],
+  exports: [ RvCheckbox ],
+  declarations: [ RvCheckbox ]
 })
 export class RvCheckboxModule {
   static forRoot(): ModuleWithProviders {
     return {
-      ngModel: RvCheckboxModule,
+      ngModule: RvCheckboxModule,
       providers: []
     }
   }

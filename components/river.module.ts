@@ -4,12 +4,14 @@ import { RvButtonModule } from './button';
 import { RvSidenavModule } from './sidenav';
 import { RvToolbarModule } from './toolbar';
 import { RvIconModule } from './icon';
+import { RvCheckboxModule } from './checkbox';
 
 const RIVER_MODULES = [
   RvButtonModule,
   RvSidenavModule,
   RvToolbarModule,
-  RvIconModule
+  RvIconModule,
+  RvCheckboxModule
 ];
 
 @NgModule({
@@ -17,7 +19,8 @@ const RIVER_MODULES = [
     RvButtonModule.forRoot(),
     RvSidenavModule.forRoot(),
     RvToolbarModule.forRoot(),
-    RvIconModule.forRoot()
+    RvIconModule.forRoot(),
+    RvCheckboxModule.forRoot()
   ],
   exports: RIVER_MODULES
 })

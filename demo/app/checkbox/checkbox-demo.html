@@ -1,0 +1,23 @@
+<div class="demo-checkbox">
+  <div class="content-constraint">
+    <rv-toolbar>CHECKBOX</rv-toolbar>
+
+    <section class="demo-section">
+      <rv-toolbar color="primary">Basic Usage</rv-toolbar>
+      <div class="usage-category">
+        <h2>Flat:</h2>
+        <form>
+          <rv-checkbox [(ngModel)]="isChecked"
+            name="cb"
+            [color]="checkboxColor()"
+            (change)="isIndeterminate = false"
+            [indeterminate]="isIndeterminate"
+            [disabled]="isDisabled"
+            [align]="alignment">
+            Do you want to <em>foobar</em> the <em>bazquux</em>?
+          </rv-checkbox>
+        </form>
+      </div>
+    </section>
+  </div>
+</div>

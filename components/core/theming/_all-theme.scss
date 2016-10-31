@@ -4,6 +4,7 @@
 @import '../../sidenav/_sidenav-theme';
 @import '../../toolbar/_toolbar-theme';
 @import '../../icon/_icon-theme';
+@import '../../checkbox/_checkbox-theme';
 
 
 // Create a theme.
@@ -13,4 +14,5 @@
   @include rv-sidenav-theme($theme);
   @include rv-toolbar-theme($theme);
   @include rv-icon-theme($theme);
+  @include rv-checkbox-theme($theme);
 }
