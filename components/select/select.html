@@ -1,0 +1,15 @@
+<div class="rv-select-trigger" overlay-origin (click)="toggle()" #origin="overlayOrigin" #trigger>
+  <span class="rv-select-placeholder" [@transformPlaceholder]="_getPlaceholderState()"> {{ placeholder }} </span>
+  <span class="rv-select-value" *ngIf="selected"> {{ selected?.viewValue }} </span>
+  <span class="rv-select-arrow"></span>
+</div>
+
+<template connected-overlay [origin]="origin" [open]="panelOpen" hasBackdrop (backdropClick)="close()"
+  backdropClass="rv-overlay-transparent-backdrop" [positions]="_positions" [width]="_getWidth()">
+  <div class="rv-select-panel" [@transformPanel]="_getPanelState()" (@transformPanel.done)="_onPanelDone()"
+    (keydown)="_keyManager.onKeydown($event)">
+    <div class="rv-select-content" [@fadeInContent]="'showing'">
+      <ng-content></ng-content>
+    </div>
+  </div>
+</template>
