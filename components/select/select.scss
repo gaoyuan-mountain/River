@@ -1,0 +1,43 @@
+@import '../core/style/menu-common';
+
+$rv-select-trigger-height: 30px !default;
+$rv-select-trigger-min-width: 112px !default;
+$rv-select-arrow-size: 5px !default;
+
+rv-select {
+  display: inline-block;
+  outline: none;
+}
+
+.rv-select-trigger {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: $rv-select-trigger-height;
+  min-width: $rv-select-trigger-min-width;
+  cursor: pointer;
+}
+
+.rv-select-placeholder {
+  padding: 0 2px;
+  transform-origin: left top;
+}
+
+.rv-select-value {
+  position: absolute;
+}
+
+.rv-select-arrow {
+  width: 0;
+  height: 0;
+  border-left: $rv-select-arrow-size solid transparent;
+  border-right: $rv-select-arrow-size solid transparent;
+  border-top: $rv-select-arrow-size solid;
+}
+
+.rv-select-panel {
+  @include rv-menu-item-base();
+  position: relative;
+  cursor: pointer;
+  outline: none;
+}
