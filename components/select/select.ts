@@ -15,7 +15,7 @@ import {
 } from '@angular/core';
 import { RvOption } from './option';
 import { ENTER, SPACE } from '../core/keyboard/keycodes';
-import { ListKeyManager } from '../core/ally/list-key-manager';
+import { ListKeyManager } from '../core/a11y/list-key-manager';
 import { Subscription } from 'rxjs/Subscription';
 import { transformPlaceholder, transformPanel, fadeInContent } from './select-animations';
 
@@ -172,5 +172,15 @@ export class RvSelect implements AfterContentInit, OnDestory {
       this._keyManager.focusedItemIndex = 0;
       this.options.first.focus();
     }
+  }
+
+  private _focusHost(): void {
+    this._renderer.invokeElementMethod(this._element.nativeElement, 'focus');
+  }
+
+  private _getOptionIndex(option: RvOption): number {
+    return this.options.reduce((result: number, current: RvOption, index: number) => {
+      return result === undefined ? (option === current ? index : undefined) : result;
+    }, undefined)
   }
 }
